@@ -1,11 +1,16 @@
-var BinarySearchTree = function(value) {
+var BinarySearchTree = function(value){
+	var node = {};
+  node.value = value;
+  node.right = null;
+  node.left = null;
+  _.extend(node, methodes)
+  return node 
+}
 
-	var node = new Nodes(value)
-	var binarySearchTree = node;
-	 
-	binarySearchTree.insert = function(value, obj){
+var methodes = {
+		insert : function(value, obj){
 		obj = obj || this;
-		var node = new Nodes(value);
+		var node = new BinarySearchTree(value);
 
 		if(value < obj.value){
 			obj.left ? obj.insert(value, obj.left) : obj.left = node;
@@ -13,9 +18,9 @@ var BinarySearchTree = function(value) {
 		else{
 			obj.right ? obj.insert(value, obj.right) : obj.right = node;
 		}
-	}
+	},
 
-	binarySearchTree.contains = function(value, obj){
+	contains : function(value, obj){
 		obj = obj || this;
 		if(obj.value === value){
 			return true
@@ -26,28 +31,18 @@ var BinarySearchTree = function(value) {
 		else{
 			return (obj.left ? obj.contains(value, obj.left) : false)
 		}
-	}
+	},
 
-	binarySearchTree.depthFirstLog = function(cb, obj){
+	depthFirstLog : function(cb, obj){
 		obj = obj || this;
 		console.log(obj)
 		cb(obj.value)
-		for(var key in obj){
-			obj.right && obj.depthFirstLog(cb, obj.right) 
-			obj.left && obj.depthFirstLog(cb, obj.left) 
-		}
+		obj.left && obj.depthFirstLog(cb, obj.left) 
+		obj.right && obj.depthFirstLog(cb, obj.right) 
+			
 	}
-	return binarySearchTree;
-};
-
-
-var Nodes = function(value){
-	var node = {};
-  node.value = value;
-  node.right = null;
-  node.left = null;
-  return node 
 }
+
 
 
 
