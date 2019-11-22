@@ -25,7 +25,7 @@ var LinkedList = function() {
       if(obj.value === target){
         return true;
       }
-      if(obj.next === null){
+      if(!obj.next){
         return false;
       }
       return innerFunction(obj.next)
@@ -45,7 +45,3 @@ var Node = function(value) {
 
   return node;
 };
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
